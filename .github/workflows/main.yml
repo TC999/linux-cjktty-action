@@ -56,12 +56,11 @@ jobs:
           cd linux-${{ inputs.version }}
           sudo aria2c https://raw.githubusercontent.com/bigshans/cjktty-patches/refs/heads/master/v6.x/cjktty-6.9.patch -o cjktty-6.9.patch
           cd ../..
-          sudo cp config kernelfiles/linux-${{ inputs.version }}
+          sudo cp config kernelfiles/linux-${{ inputs.version }}/.config
 
       - name: Complie-The-Kernel
         run: |
           cd kernelfiles/linux-${{ inputs.version }}
-          sudo mv config .config
           patch -Np1 <cjktty-6.9.patch
           sudo make clean
           sudo scripts/config --disable SYSTEM_REVOCATION_KEYS
