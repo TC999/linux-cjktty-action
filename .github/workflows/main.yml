@@ -56,7 +56,7 @@ jobs:
           cd linux-${{ inputs.version }}
           sudo aria2c https://raw.githubusercontent.com/bigshans/cjktty-patches/refs/heads/master/v6.x/cjktty-6.9.patch -o cjktty-6.9.patch
           cd ../..
-          sudo cp config kernelfiles/linux-${{ inputs.version }}/.config
+          sudo cp .config kernelfiles/linux-${{ inputs.version }}/.config
 
       - name: Complie-The-Kernel
         run: |
