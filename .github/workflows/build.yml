@@ -38,14 +38,14 @@ jobs:
 
       - name: 安装依赖
         run: |
-          sudo apt install gcc
+          sudo apt install g++
           sudo apt install bison flex libncurses-dev make libssl-dev u-boot-tools curl build-essential debhelper-compat libelf-dev
 
       - name: 移动配置文件
         run: cp .config linux/.config
 
       - name: 编译
-        run: cd linux && make deb-pkg -j$(nproc)
+        run: cd linux && sudo make ARCH=x86_64 deb-pkg -j$(nproc)
 
       - name: 上传文件
         uses: actions/upload-artifact@v4.6.0
