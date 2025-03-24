@@ -45,7 +45,13 @@ jobs:
         run: cp .config linux/.config
 
       - name: 编译
-        run: cd linux && git init && git add . && sudo make ARCH=x86_64 deb-pkg -j$(nproc)
+        run: |
+          cd linux
+          sudo make clean
+          sudo scripts/config --disable SYSTEM_REVOCATION_KEYS
+          sudo scripts/config --disable SYSTEM_TRUSTED_KEYS
+          sudo scripts/config --disable DEBUG_INFO
+          sudo make ARCH=x86 deb-pkg -j$(nproc)
 
       - name: 上传文件
         uses: actions/upload-artifact@v4.6.0
