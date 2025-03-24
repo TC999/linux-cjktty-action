@@ -38,8 +38,7 @@ jobs:
 
       - name: 安装依赖
         run: |
-          sudo apt install g++
-          sudo apt install bison flex libncurses-dev make libssl-dev u-boot-tools curl build-essential debhelper-compat libelf-dev
+          sudo apt-get update && sudo apt-get upgrade && sudo apt-get install wget exuberant-ctags libncurses5-dev curl git fakeroot build-essential ncurses-dev xz-utils libssl-dev bc flex libelf-dev bison gcc make cmake g++ xz-utils zstd dwarves aria2
 
       - name: 移动配置文件
         run: cp .config linux/.config
