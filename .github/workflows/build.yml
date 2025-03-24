@@ -45,7 +45,7 @@ jobs:
         run: cp .config linux/.config
 
       - name: 编译
-        run: cd linux && git inut && git add . && sudo make ARCH=x86_64 deb-pkg -j$(nproc)
+        run: cd linux && git init && git add . && sudo make ARCH=x86_64 deb-pkg -j$(nproc)
 
       - name: 上传文件
         uses: actions/upload-artifact@v4.6.0
